@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Side Menu -->
+    <nav class="side-menu" aria-label="Main Navigation">
+        <a href="index.html" class="menu-link" aria-label="About Me">About Me</a>
+        <a href="portfolio.html" class="menu-link active" aria-label="My Portfolio">My Portfolio</a>
+        <a href="contact.html" class="menu-link" aria-label="Contact Me">Contact Me</a>
+    </nav>
+
+    <!-- Portfolio Content -->
+    <main class="portfolio-content">
+        <h1>My Portfolio</h1>
+        
+        <!-- Project List with padding at each end -->
+        <section class="project-list" id="projectList" aria-label="Project List" role="region">
+            <!-- Padding space on the left for smoother scrolling -->
+            <div class="project-padding" aria-hidden="true"></div>
+            
+            <!-- Project Card 1 -->
+            <article class="project-card" data-id="project1" tabindex="0" aria-label="Colour Bounce Project" onclick="openProjectModal('project1')">
+                <img src="images/project1-preview.jpg" alt="Colour Bounce Project Preview" class="project-preview">
+                <h2>My Project 1: Colour Bounce</h2>
+                <p>This is a description of the project to explain its purpose or process. Here you can add details that give context.</p>
+            </article>
+
+            <!-- Project Card 2 -->
+            <article class="project-card" data-id="project2" tabindex="0" aria-label="Interactive Design Project" onclick="openProjectModal('project2')">
+                <img src="images/project2-preview.jpg" alt="Interactive Design Project Preview" class="project-preview">
+                <h2>Using Python to Automate Calendar Event Organization and Classification</h2>
+                <p>This project showcases interactive design elements that respond to user actions, making the experience more engaging and fun.</p>
+            </article>
+
+            <!-- Project Card 3 -->
+            <article class="project-card" data-id="project3" tabindex="0" aria-label="Motion Graphics Project" onclick="openProjectModal('project3')">
+                <img src="images/project3-preview.jpg" alt="Motion Graphics Project Preview" class="project-preview">
+                <h2>My Project 3: Motion Graphics</h2>
+                <p>Explore this project to see creative motion graphics that bring ideas to life visually and dynamically.</p>
+            </article>
+
+            <!-- Additional project cards can be added here -->
+
+            <!-- Padding space on the right for smoother scrolling -->
+            <div class="project-padding" aria-hidden="true"></div>
+        </section>
+    </main>
+
+    <!-- Project Detail Modal -->
+    <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="project-modal-content">
+            <button class="close-button" id="closeModal" aria-label="Close Modal" onclick="closeProjectModal()">&times;</button>
+            <div id="projectDetailContent">
+                <!-- Dynamic content (e.g., p5.js sketch) will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Include p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

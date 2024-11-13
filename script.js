@@ -46,6 +46,8 @@ function openModal(projectId) {
 
         // Display project content based on type
         if (project.p5Sketch) {
+            projectDetailContent.innerHTML += `
+                <div id="p5Container"></div> <!-- Container for p5.js -->
             `;
             initP5Sketch(); // Initialize p5.js sketch
         } else if (project.isScratchGame) {
@@ -55,7 +57,6 @@ function openModal(projectId) {
         } else if (project.image) {
             projectDetailContent.innerHTML += `
                 <img src="${project.image}" alt="${project.title}" class="project-modal-image">
-                <p>${project.description}</p>
             `;
         }
 

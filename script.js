@@ -6,18 +6,19 @@ document.querySelectorAll('.menu-link').forEach(link => {
     }
 });
 
-// Project data with a p5 project
+// Project data with p5 and Scratch projects
 const projectData = {
     project1: {
         title: "Project 1: Colour Bounce",
         description: "Detailed description of Project 1. This is where you add more information about this specific project, explaining its purpose, goals, and outcomes.",
         image: "images/project1-preview.jpg",
-        p5Sketch: true // Indicate that this project includes a p5.js sketch
+        p5Sketch: true // Indicates that this project includes a p5.js sketch
     },
     project2: {
-        title: "Project 2: Interactive Design",
-        description: "This project showcases interactive design elements that respond to user actions, making the experience more engaging and fun.",
-        image: "images/project2-preview.jpg"
+        title: "Project 2: Interactive Game (Scratch)",
+        description: "This project showcases an interactive Scratch game. Click to open and play the game.",
+        scratchEmbedUrl: "https://scratch.mit.edu/projects/1061798315/embed", // Scratch project URL
+        isScratchGame: true // Indicates this project includes a Scratch game
     },
     project3: {
         title: "Project 3: Motion Graphics",
@@ -43,7 +44,13 @@ function openModal(projectId) {
                 <p>${project.description}</p>
                 <div id="p5Container"></div> <!-- Container for the p5.js sketch -->
             `;
-            initP5Sketch(projectId); // Initialize the p5.js sketch with project-specific logic
+            initP5Sketch(); // Initialize the p5.js sketch for Project 1
+        } else if (project.isScratchGame) {
+            projectDetailContent.innerHTML = `
+                <h1>${project.title}</h1>
+                <p>${project.description}</p>
+                <iframe src="${project.scratchEmbedUrl}" width="485" height="402" frameborder="0" allowfullscreen></iframe>
+            `;
         } else {
             projectDetailContent.innerHTML = `
                 <img src="${project.image}" alt="${project.title}" class="project-modal-image">
@@ -60,7 +67,7 @@ function openModal(projectId) {
 function closeModal() {
     projectModal.style.display = 'none';
     projectModal.setAttribute('aria-hidden', 'true');
-    disposeP5Sketch(); // Dispose of the p5.js instance
+    disposeP5Sketch(); // Dispose of the p5.js instance if it exists
 }
 
 // Function to initialize a p5.js sketch
@@ -267,8 +274,7 @@ function initP5Sketch(projectId) {
     }
 }
 
-
-// Function to dispose of the p5.js instance when modal is closed
+// Function to dispose of the p5.js instance
 function disposeP5Sketch() {
     if (p5Instance) {
         p5Instance.remove();

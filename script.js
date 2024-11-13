@@ -10,13 +10,11 @@ document.querySelectorAll('.menu-link').forEach(link => {
 const projectData = {
     project1: {
         title: "Project 1: Colour Bounce",
-        description: "Detailed description of Project 1. This is where you add more information about this specific project, explaining its purpose, goals, and outcomes.",
         image: "images/project1-preview.jpg",
         p5Sketch: true // Indicates that this project includes a p5.js sketch
     },
     project2: {
         title: "Project 2: Interactive Game (Scratch)",
-        description: "This project showcases an interactive Scratch game. Click to open and play the game.",
         scratchEmbedUrl: "https://scratch.mit.edu/projects/1061798315/embed", // Scratch project URL
         isScratchGame: true // Indicates this project includes a Scratch game
     },
@@ -34,30 +32,43 @@ const closeModalButton = document.getElementById('closeModal');
 
 let p5Instance; // Store p5.js instance here
 
-// Function to open the modal and populate with project data
+// Function to open the modal and display the project content with the title on top
 function openModal(projectId) {
     const project = projectData[projectId];
     if (project) {
+        // Clear existing content
+        projectDetailContent.innerHTML = '';
+
+        // Display the project title at the top
+        projectDetailContent.innerHTML += `
+            <h1 class="project-title">${project.title}</h1>
+        `;
+
+        // Display project content based on type
         if (project.p5Sketch) {
             projectDetailContent.innerHTML = `
                 <h1>${project.title}</h1>
                 <p>${project.description}</p>
                 <div id="p5Container"></div> <!-- Container for the p5.js sketch -->
             `;
-            initP5Sketch(); // Initialize the p5.js sketch for Project 1
+            initP5Sketch(); // Initialize p5.js sketch
         } else if (project.isScratchGame) {
             projectDetailContent.innerHTML = `
                 <h1>${project.title}</h1>
                 <p>${project.description}</p>
                 <iframe src="${project.scratchEmbedUrl}" width="485" height="402" frameborder="0" allowfullscreen></iframe>
+            projectDetailContent.innerHTML += `
+                <iframe src="${project.scratchEmbedUrl}" width="700" height="450" frameborder="0" allowfullscreen></iframe>
             `;
-        } else {
-            projectDetailContent.innerHTML = `
+        } else if (project.image) {
+            projectDetailContent.innerHTML += `
                 <img src="${project.image}" alt="${project.title}" class="project-modal-image">
                 <h1>${project.title}</h1>
                 <p>${project.description}</p>
             `;
         }
+
+        // Show the modal
         projectModal.setAttribute('aria-hidden', 'false');
         projectModal.style.display = 'flex';
     }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Side Menu -->
+    <nav class="side-menu" aria-label="Main Navigation">
+        <a href="index.html" class="menu-link" aria-label="About Me">About Me</a>
+        <a href="portfolio.html" class="menu-link active" aria-label="My Portfolio">My Portfolio</a>
+        <a href="contact.html" class="menu-link" aria-label="Contact Me">Contact Me</a>
+    </nav>
+
+    <!-- Portfolio Content -->
+    <main class="portfolio-content">
+        <h1></h1>
+        
+        <!-- Project List with padding at each end -->
+        <section class="project-list" id="projectList" aria-label="Project List" role="region">
+            <!-- Padding space on the left for smoother scrolling -->
+            <div class="project-padding" aria-hidden="true"></div>
+            
+            <!-- Project Card 1 -->
+            <article class="project-card" data-id="project1" tabindex="0" aria-label="Colour Bounce Project" onclick="openProjectModal('project1')">
+                <img src="images/icon1.png" alt="Your Photo" class="about-photo">
+                <h2>Colour Bounce</h2>
+                <p>This p5.js project features a bouncing ball that changes color when colliding with colorful boxes. Users can click to launch the ball and stop it by clicking again, turning it black. The boxes rotate colors every 5 seconds, adding visual variety. The project demonstrates motion, collision detection, and user interaction for playful experience.</p>
+            </article>
+
+            <!-- Project Card 2 -->
+            <article class="project-card" data-id="project2" tabindex="0" aria-label="Interactive Design Project" onclick="openProjectModal('project2')">
+                <img src="images/appicon.png" alt="Interactive Design Project Preview" class="project-preview">
+                <h2>Feed the Cookie Monster</h2>
+                <p>This game features the Cookie Monster, who catches falling cookies. Apples cause the Cookie Monster to lose points, while Super Cookies grant bonus points. As the game progresses, cookies fall faster, increasing the challenge. Players must avoid apples and catch the cookies for rewards.</p>
+            </article>
+
+            <!-- Project Card 3 -->
+            <article class="project-card" data-id="project3" tabindex="0" aria-label="Motion Graphics Project" onclick="openProjectModal('project3')">
+                <img src="images/cali.png" alt="Motion Graphics Project Preview" class="project-preview">
+                <h2>Calify</h2>
+                <p>This code processes an user uploaded ICS file, classifies events into categories like Class, Personal, Meeting, etc, using keywords and a pre-trained machine learning model. It assigns each event a color based on its category and displays event details for a selected day. Users can choose a day, and view categorized events with color-coded labels.</p>
+            </article>
+
+            <!-- Additional project cards can be added here -->
+
+            <!-- Padding space on the right for smoother scrolling -->
+            <div class="project-padding" aria-hidden="true"></div>
+        </section>
+    </main>
+
+    <!-- Project Detail Modal -->
+    <div class="project-modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="project-modal-content">
+            <button class="close-button" id="closeModal" aria-label="Close Modal" onclick="closeProjectModal()">&times;</button>
+            <div id="projectDetailContent">
+                <!-- Dynamic content (e.g., p5.js sketch) will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Include p5.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

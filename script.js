@@ -46,24 +46,15 @@ function openModal(projectId) {
 
         // Display project content based on type
         if (project.p5Sketch) {
-            projectDetailContent.innerHTML = `
-                <h1>${project.title}</h1>
-                <p>${project.description}</p>
-                <div id="p5Container"></div> <!-- Container for the p5.js sketch -->
             `;
             initP5Sketch(); // Initialize p5.js sketch
         } else if (project.isScratchGame) {
-            projectDetailContent.innerHTML = `
-                <h1>${project.title}</h1>
-                <p>${project.description}</p>
-                <iframe src="${project.scratchEmbedUrl}" width="485" height="402" frameborder="0" allowfullscreen></iframe>
             projectDetailContent.innerHTML += `
                 <iframe src="${project.scratchEmbedUrl}" width="700" height="450" frameborder="0" allowfullscreen></iframe>
             `;
         } else if (project.image) {
             projectDetailContent.innerHTML += `
                 <img src="${project.image}" alt="${project.title}" class="project-modal-image">
-                <h1>${project.title}</h1>
                 <p>${project.description}</p>
             `;
         }
